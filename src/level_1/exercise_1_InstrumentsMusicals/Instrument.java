@@ -6,4 +6,6 @@ public abstract class Instrument {
 
     public String getName() { return name; }
     public double getPrice() { return price; }
+
+    public abstract void play();
 }
