@@ -14,5 +14,8 @@ public class Main {
         for (Instrument instrument : instruments) {
             instrument.play();
         }
+
+        SampleBlockClass sampleBlockClass = new SampleBlockClass();
+        System.out.println(sampleBlockClass);
     }
 }
