@@ -13,8 +13,13 @@ public class BasketballArticle extends Article {
     }
 
     private final static double basePrice = 250;
-    private final static double addonEuroLeague = 75;
-    private final static double addonBarcelonaMadrid = 75;
+    private final static double addonPriceEuroLeague = 75;
+    private final static double addonPriceBarcelonaMadrid = 75;
+
+    private final static double baseRating = 4;
+    private final static double addonRatingEuroLeague = 3;
+    private final static double addonRatingACB = 2;
+    private final static double addonRatingBarcelonaMadrid = 1;
 
     protected String competition;
     protected String club;
@@ -24,11 +29,11 @@ public class BasketballArticle extends Article {
         this.price = basePrice;
 
         if (contains(competition, "Euro League") || contains(competition, "EuroLeague")){
-            price += addonEuroLeague;
+            price += addonPriceEuroLeague;
         }
 
         if (containsAny(club, List.of("Barcelona", "Madrid"))){
-            price += addonBarcelonaMadrid;
+            price += addonPriceBarcelonaMadrid;
         }
 
         System.out.println("Price of this article has been updated!");
@@ -36,6 +41,19 @@ public class BasketballArticle extends Article {
 
     @Override
     protected void calculateRating() {
+        this.rating = baseRating;
 
+        if (contains(competition, "Euro League") || contains(competition, "EuroLeague")){
+            rating += addonRatingEuroLeague;
+        }
+        else if (contains(competition, "ACB")){
+            rating += addonRatingACB;
+        }
+
+        if (containsAny(club, List.of("Barcelona", "Madrid"))){
+            rating += addonPriceBarcelonaMadrid;
+        }
+
+        System.out.println("Rating of this article has been updated!");
     }
 }

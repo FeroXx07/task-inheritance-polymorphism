@@ -12,7 +12,10 @@ public class MotoGpArticle extends Article {
     }
 
     private final static double basePrice = 100;
-    private final static double addonHondaYamaha = 50;
+    private final static double addonPriceHondaYamaha = 50;
+
+    private final static double baseRating = 100;
+    private final static double addonRatingHondaYamaha = 50;
 
     protected String team;
 
@@ -21,12 +24,20 @@ public class MotoGpArticle extends Article {
         this.price = basePrice;
 
         if (containsAny(team, List.of("Honda", "Yamaha"))){
-            price += addonHondaYamaha;
+            price += addonPriceHondaYamaha;
         }
+
+        System.out.println("Price of this article has been updated!");
     }
 
     @Override
     protected void calculateRating() {
+        this.rating = baseRating;
 
+        if (containsAny(team, List.of("Honda", "Yamaha"))){
+            rating += addonRatingHondaYamaha;
+        }
+
+        System.out.println("Rating of this article has been updated!");
     }
 }

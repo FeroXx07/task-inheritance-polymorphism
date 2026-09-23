@@ -15,7 +15,11 @@ public class TennisArticle extends Article {
     }
 
     private final static double basePrice = 150;
-    private final static double addonBigThree = 100;
+    private final static double addonPriceBigThree = 100;
+
+    private final static double baseRating = 4;
+    private final static double addonRatingBigThree = 3;
+
     private final static List<String> bigThreePlayers = List.of("Federer", "Nadal", "Djokovic");
 
     protected String competition;
@@ -29,14 +33,26 @@ public class TennisArticle extends Article {
         for (String player : players) {
             if (containsAny(player, bigThreePlayers))
             {
-                price += addonBigThree;
+                price += addonPriceBigThree;
                 break;
             }
         }
+
+        System.out.println("Price of this article has been updated!");
     }
 
     @Override
     protected void calculateRating() {
+        this.rating = baseRating;
 
+        // Only add the addon once, hence the break
+        for (String player : players) {
+            if (containsAny(player, bigThreePlayers))
+            {
+                rating += addonRatingBigThree;
+                break;
+            }
+        }
+        System.out.println("Rating of this article has been updated!");
     }
 }

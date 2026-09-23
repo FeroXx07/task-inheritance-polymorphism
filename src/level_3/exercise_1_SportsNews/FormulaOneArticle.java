@@ -12,7 +12,10 @@ public class FormulaOneArticle extends Article {
     }
 
     private final static double basePrice = 100;
-    private final static double addonFerrariMercedes = 50;
+    private final static double addonPriceFerrariMercedes = 50;
+
+    private final static double baseRating = 100;
+    private final static double addonRatingFerrariMercedes = 50;
 
     protected String scuderia;
 
@@ -21,12 +24,20 @@ public class FormulaOneArticle extends Article {
         this.price = basePrice;
 
         if (containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
-            price += addonFerrariMercedes;
+            price += addonPriceFerrariMercedes;
         }
+
+        System.out.println("Price of this article has been updated!");
     }
 
     @Override
     protected void calculateRating() {
+        this.rating = basePrice;
 
+        if (containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
+            rating += addonRatingFerrariMercedes;
+        }
+
+        System.out.println("Rating of this article has been updated!");
     }
 }

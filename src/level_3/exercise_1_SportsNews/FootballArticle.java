@@ -14,9 +14,15 @@ public class FootballArticle extends Article {
     }
 
     private final static double basePrice = 300;
-    private final static double addonChampionsLeague = 300;
-    private final static double addonBarcelonaMadrid = 100;
-    private final static double addonFerranBenzema = 50;
+    private final static double addonPriceChampionsLeague = 300;
+    private final static double addonPriceBarcelonaMadrid = 100;
+    private final static double addonPriceFerranBenzema = 50;
+
+    private final static double baseRating = 5;
+    private final static double addonRatingChampionsLeague = 3;
+    private final static double addonRatingLeague = 2;
+    private final static double addonRatingBarcelonaMadrid = 1;
+    private final static double addonRatingFerranBenzema = 1;
 
     protected String competition;
     protected String club;
@@ -24,18 +30,18 @@ public class FootballArticle extends Article {
 
     @Override
     protected void calculatePriceNews() {
-            this.price = basePrice;
+        this.price = basePrice;
 
         if (contains(competition, "Champions League")){
-            price += addonChampionsLeague;
+            price += addonPriceChampionsLeague;
         }
 
         if (containsAny(club, List.of("Barcelona", "Madrid"))){
-            price += addonBarcelonaMadrid;
+            price += addonPriceBarcelonaMadrid;
         }
 
         if (containsAny(player, List.of("Benzema", "Ferran Torres"))){
-            price += addonFerranBenzema;
+            price += addonPriceFerranBenzema;
         }
 
         System.out.println("Price of this article has been updated!");
@@ -43,6 +49,23 @@ public class FootballArticle extends Article {
 
     @Override
     protected void calculateRating() {
+        this.rating = baseRating;
 
+        if (contains(competition, "Champions League")){
+            rating += addonRatingChampionsLeague;
+        }
+        else if (contains(competition, "League")){
+            rating += addonRatingLeague;
+        }
+
+        if (containsAny(club, List.of("Barcelona", "Madrid"))){
+            rating += addonRatingBarcelonaMadrid;
+        }
+
+        if (containsAny(player, List.of("Benzema", "Ferran Torres"))){
+            rating += addonRatingFerranBenzema;
+        }
+
+        System.out.println("Rating of this article has been updated!");
     }
 }
