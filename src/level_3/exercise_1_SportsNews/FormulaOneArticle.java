@@ -3,9 +3,12 @@ package level_3.exercise_1_SportsNews;
 import java.util.List;
 
 public class FormulaOneArticle extends Article {
-    public FormulaOneArticle(String title, String text, double rating, String scuderia) {
-        super(title, text, rating);
+    public FormulaOneArticle(String title, String text, String scuderia) {
+        super(title, text);
         this.scuderia = scuderia;
+
+        calculatePriceNews();
+        calculateRating();
     }
 
     private final static double basePrice = 100;
@@ -20,5 +23,10 @@ public class FormulaOneArticle extends Article {
         if (containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
             price += addonFerrariMercedes;
         }
+    }
+
+    @Override
+    protected void calculateRating() {
+
     }
 }

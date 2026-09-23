@@ -3,9 +3,12 @@ package level_3.exercise_1_SportsNews;
 import java.util.List;
 
 public class MotoGpArticle extends Article {
-    public MotoGpArticle(String title, String text, double rating, String team) {
-        super(title, text, rating);
+    public MotoGpArticle(String title, String text, String team) {
+        super(title, text);
         this.team = team;
+
+        calculatePriceNews();
+        calculateRating();
     }
 
     private final static double basePrice = 100;
@@ -20,5 +23,10 @@ public class MotoGpArticle extends Article {
         if (containsAny(team, List.of("Honda", "Yamaha"))){
             price += addonHondaYamaha;
         }
+    }
+
+    @Override
+    protected void calculateRating() {
+
     }
 }

@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class Article {
-    public Article(String title, String text, double rating) {
+    public Article(String title, String text) {
         this.title = title;
         this.text = text;
-        this.rating = rating;
     }
 
     protected String title;
@@ -16,6 +15,7 @@ public abstract class Article {
     protected double price;
 
     protected abstract void calculatePriceNews();
+    protected abstract void calculateRating();
 
     protected boolean contains(String current, String other){
         return current.equalsIgnoreCase(other);

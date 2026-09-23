@@ -2,13 +2,16 @@ package level_3.exercise_1_SportsNews;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class TennisArticle extends Article {
-    public TennisArticle(String title, String text, double rating, String competition, ArrayList<String> players) {
-        super(title, text, rating);
+    public TennisArticle(String title, String text,
+                         String competition, ArrayList<String> players) {
+        super(title, text);
         this.competition = competition;
         this.players = players;
+
+        calculatePriceNews();
+        calculateRating();
     }
 
     private final static double basePrice = 150;
@@ -30,5 +33,10 @@ public class TennisArticle extends Article {
                 break;
             }
         }
+    }
+
+    @Override
+    protected void calculateRating() {
+
     }
 }

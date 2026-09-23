@@ -1,17 +1,16 @@
 package level_3.exercise_1_SportsNews;
 
 import java.util.List;
-import java.util.Locale;
 
 public class FootballArticle extends Article {
-    public FootballArticle(String title, String text, double rating, double price,
-                           String competition, String club, String player) {
-        super(title, text, rating);
+    public FootballArticle(String title, String text, String competition, String club, String player) {
+        super(title, text);
         this.competition = competition;
         this.club = club;
         this.player = player;
 
         calculatePriceNews();
+        calculateRating();
     }
 
     private final static double basePrice = 300;
@@ -40,5 +39,10 @@ public class FootballArticle extends Article {
         }
 
         System.out.println("Price of this article has been updated!");
+    }
+
+    @Override
+    protected void calculateRating() {
+
     }
 }
