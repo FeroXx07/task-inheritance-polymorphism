@@ -1,5 +1,7 @@
 package level_3.exercise_1_SportsNews;
 
+import utility.StringUtility;
+
 import java.util.List;
 
 public class MotoGpArticle extends Article {
@@ -23,7 +25,7 @@ public class MotoGpArticle extends Article {
     protected void calculatePriceNews() {
         this.price = basePrice;
 
-        if (containsAny(team, List.of("Honda", "Yamaha"))){
+        if (StringUtility.containsAny(team, List.of("Honda", "Yamaha"))){
             price += addonPriceHondaYamaha;
         }
 
@@ -34,7 +36,7 @@ public class MotoGpArticle extends Article {
     protected void calculateRating() {
         this.rating = baseRating;
 
-        if (containsAny(team, List.of("Honda", "Yamaha"))){
+        if (StringUtility.containsAny(team, List.of("Honda", "Yamaha"))){
             rating += addonRatingHondaYamaha;
         }
 

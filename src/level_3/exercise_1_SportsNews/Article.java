@@ -21,19 +21,6 @@ public abstract class Article {
 
     protected abstract void calculatePriceNews();
     protected abstract void calculateRating();
-
-    protected boolean contains(String current, String other){
-        return current.equalsIgnoreCase(other);
-    }
-
-    protected boolean containsAny(String content, List<String> toFindList){
-        for (String word : toFindList){
-            if (content.toLowerCase(Locale.ROOT).contains(word.toLowerCase(Locale.ROOT))){
-                return true;
-            }
-        }
-        return false;
-    }
     
     @Override
     public String toString() {

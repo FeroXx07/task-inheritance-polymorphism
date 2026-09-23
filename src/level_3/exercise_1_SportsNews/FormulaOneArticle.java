@@ -1,5 +1,7 @@
 package level_3.exercise_1_SportsNews;
 
+import utility.StringUtility;
+
 import java.util.List;
 
 public class FormulaOneArticle extends Article {
@@ -23,7 +25,7 @@ public class FormulaOneArticle extends Article {
     protected void calculatePriceNews() {
         this.price = basePrice;
 
-        if (containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
+        if (StringUtility.containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
             price += addonPriceFerrariMercedes;
         }
 
@@ -34,7 +36,7 @@ public class FormulaOneArticle extends Article {
     protected void calculateRating() {
         this.rating = basePrice;
 
-        if (containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
+        if (StringUtility.containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
             rating += addonRatingFerrariMercedes;
         }
 

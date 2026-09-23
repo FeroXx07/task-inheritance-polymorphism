@@ -1,5 +1,7 @@
 package level_3.exercise_1_SportsNews;
 
+import utility.StringUtility;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class TennisArticle extends Article {
 
         // Only add the addon once, hence the break
         for (String player : players) {
-            if (containsAny(player, bigThreePlayers))
+            if (StringUtility.containsAny(player, bigThreePlayers))
             {
                 price += addonPriceBigThree;
                 break;
@@ -47,7 +49,7 @@ public class TennisArticle extends Article {
 
         // Only add the addon once, hence the break
         for (String player : players) {
-            if (containsAny(player, bigThreePlayers))
+            if (StringUtility.containsAny(player, bigThreePlayers))
             {
                 rating += addonRatingBigThree;
                 break;

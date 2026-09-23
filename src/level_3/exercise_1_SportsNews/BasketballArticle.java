@@ -1,5 +1,7 @@
 package level_3.exercise_1_SportsNews;
 
+import utility.StringUtility;
+
 import java.util.List;
 
 public class BasketballArticle extends Article {
@@ -28,11 +30,11 @@ public class BasketballArticle extends Article {
     protected void calculatePriceNews() {
         this.price = basePrice;
 
-        if (contains(competition, "Euro League") || contains(competition, "EuroLeague")){
+        if (StringUtility.contains(competition, "Euro League") || StringUtility.contains(competition, "EuroLeague")){
             price += addonPriceEuroLeague;
         }
 
-        if (containsAny(club, List.of("Barcelona", "Madrid"))){
+        if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
             price += addonPriceBarcelonaMadrid;
         }
 
@@ -43,14 +45,14 @@ public class BasketballArticle extends Article {
     protected void calculateRating() {
         this.rating = baseRating;
 
-        if (contains(competition, "Euro League") || contains(competition, "EuroLeague")){
+        if (StringUtility.contains(competition, "Euro League") || StringUtility.contains(competition, "EuroLeague")){
             rating += addonRatingEuroLeague;
         }
-        else if (contains(competition, "ACB")){
+        else if (StringUtility.contains(competition, "ACB")){
             rating += addonRatingACB;
         }
 
-        if (containsAny(club, List.of("Barcelona", "Madrid"))){
+        if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
             rating += addonPriceBarcelonaMadrid;
         }
 
