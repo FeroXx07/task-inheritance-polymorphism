@@ -8,4 +8,12 @@ public class Phone  {
     public void makeCall(String phoneNumber){
         System.out.println("Making a call to the following number: " + phoneNumber);
     }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }
