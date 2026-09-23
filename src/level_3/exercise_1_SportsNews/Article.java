@@ -1,5 +1,7 @@
 package level_3.exercise_1_SportsNews;
 
+import utility.IdGenerator;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -7,8 +9,11 @@ public abstract class Article {
     public Article(String title, String text) {
         this.title = title;
         this.text = text;
+
+        id = IdGenerator.generateTimestampId();
     }
 
+    protected String id;
     protected String title;
     protected String text = "";
     protected double rating;
