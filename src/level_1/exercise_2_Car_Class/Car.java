@@ -12,6 +12,14 @@ public class Car {
     private static String model;
     private final String power;
 
+    public static void brake(){
+        System.out.println("El vehicle està frenant");
+    }
+
+    public void accelerate(){
+        System.out.println("El vehicle està accelerant");
+    }
+
     @Override
     public String toString() {
         return "Car{" +
