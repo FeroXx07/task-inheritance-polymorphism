@@ -2,6 +2,11 @@ package level_2.exercise_1_Smartphone;
 
 public class Phone  {
 
+    public Phone(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
     protected String brand;
     protected String model;
 
