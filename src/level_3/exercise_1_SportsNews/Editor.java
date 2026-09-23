@@ -1,6 +1,8 @@
 package level_3.exercise_1_SportsNews;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Editor {
     public Editor(String dni) {
@@ -15,12 +17,33 @@ public class Editor {
 
     public String getDni() { return dni; }
     public static double getWage() { return wage; }
+    public List<Article> getArticles() { return List.copyOf(articles); }
 
-    public void AddArticle(Article toAdd){
-//        if (articles.stream().anyMatch(a -> a.id.equalsIgnoreCase(toAdd.id))){
-//            throw new IllegalArgumentException("Article with ID " + toAdd.id + " already exists in editor's database");
-//        }
+    public void addArticle(Article toAdd){
+        validationArticleNotExists(toAdd.title);
         articles.add(toAdd);
+        System.out.println("Article with title: " + toAdd.title + " has been added to editor: " + this.dni);
+    }
+
+    public void removeArticle(Article toRemove){
+        validationArticleExists(toRemove.title);
+        articles.remove(toRemove);
+    }
+
+    public Article getArticle(String title){
+        validationArticleExists(title);
+        return articles.stream().filter(a -> a.title.equalsIgnoreCase(title)).findFirst().orElse(null);
+    }
+
+    private void validationArticleNotExists(String title){
+        if (articles.stream().anyMatch(a -> a.title.equalsIgnoreCase(title))){
+            throw new IllegalArgumentException("Article with title " + title + " ALREADY exists in editor's database");
+        }
+    }
+    private void validationArticleExists(String title){
+        if (articles.stream().noneMatch(a -> a.title.equalsIgnoreCase(title))){
+            throw new IllegalArgumentException("Article with title " + title + " DOES NOT exist in editor's database");
+        }
     }
 
     public static void validateDni(String dni) {
@@ -32,5 +55,13 @@ public class Editor {
             throw new IllegalArgumentException("INVALID DNI NUMBER: " + dni + ". It must have 9 characters. ");
         }
         // Could add also letter validation but it is out of scope of the exercise.
+    }
+
+    @Override
+    public String toString() {
+        return "Editor{" +
+                "dni='" + dni + '\'' +
+                ", articles=" + articles +
+                '}';
     }
 }
