@@ -29,6 +29,6 @@ public abstract class Article {
                 ", text='" + text + '\'' +
                 ", rating=" + rating +
                 ", price=" + price +
-                '}';
+                '}' + '\n';
     }
 }

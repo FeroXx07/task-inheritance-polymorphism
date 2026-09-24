@@ -54,7 +54,8 @@ public class ScannerUtility {
                 System.err.println(errorMessage + ": " + e.getMessage());
                 forceCleanInputBuffer(input);
             }
-            cleanInputBuffer(input);
+            //cleanInputBuffer(input);
+            forceCleanInputBuffer(input);
         }
         return number;
     }

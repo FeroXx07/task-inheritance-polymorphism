@@ -22,7 +22,6 @@ public class Editor {
     public void addArticle(Article toAdd){
         validationArticleNotExists(toAdd.title);
         articles.add(toAdd);
-        System.out.println("Article with title: " + toAdd.title + " has been added to editor: " + this.dni);
     }
 
     public void removeArticle(Article toRemove){
@@ -35,30 +34,36 @@ public class Editor {
         return articles.stream().filter(a -> a.title.equalsIgnoreCase(title)).findFirst().orElse(null);
     }
 
-    private void validationArticleNotExists(String title){
+    public void validationArticleNotExists(String title){
         if (articles.stream().anyMatch(a -> a.title.equalsIgnoreCase(title))){
-            throw new IllegalArgumentException("Article with title " + title + " ALREADY exists in editor's database");
+            throw new IllegalArgumentException("Article with title \"" + title + "\" ALREADY exists in editor's database");
         }
     }
-    private void validationArticleExists(String title){
+    public void validationArticleExists(String title){
         if (articles.stream().noneMatch(a -> a.title.equalsIgnoreCase(title))){
-            throw new IllegalArgumentException("Article with title " + title + " DOES NOT exist in editor's database");
+            throw new IllegalArgumentException("Article with title \"" + title + "\" DOES NOT exist in editor's database");
         }
     }
 
     public static void validateDni(String dni) {
         // dni.isEmpty() does not take into account whitespace characters
         if (dni.isBlank()) {
-            throw new IllegalArgumentException("INVALID DNI NUMBER: " + dni + ". It cannot be empty");
+            throw new IllegalArgumentException("INVALID DNI NUMBER: \"" + dni + "\". It cannot be empty");
         }
         if (dni.length() != 9) {
-            throw new IllegalArgumentException("INVALID DNI NUMBER: " + dni + ". It must have 9 characters. ");
+            throw new IllegalArgumentException("INVALID DNI NUMBER: \"" + dni + "\". It must have 9 characters. ");
         }
         // Could add also letter validation but it is out of scope of the exercise.
     }
 
     @Override
     public String toString() {
+        return "Editor{" +
+                "dni='" + dni +
+                '}';
+    }
+
+    public String toFullString() {
         return "Editor{" +
                 "dni='" + dni + '\'' +
                 ", articles=" + articles +
