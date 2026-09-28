@@ -1,16 +1,15 @@
 package level_1.exercise_2_Car_Class;
 
 public class Car {
+    private static final String BRAND = "Cupra";
+    private static String model;
+    private final int power;
 
     // Only static and non-static final can be initialized through constructor.
     public Car(String model, int power) {
         this.power = power;
         Car.model = model;
     }
-
-    private static final String brand = "Cupra";
-    private static String model;
-    private final int power;
 
     public static void brake(){
         System.out.println("El vehicle està frenant");
@@ -23,7 +22,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "brand='" + brand + '\'' +
+                "brand='" + BRAND + '\'' +
                 "model='" + model + '\'' +
                 "power='" + power + '\'' +
                 '}';

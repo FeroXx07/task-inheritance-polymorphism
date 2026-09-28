@@ -5,6 +5,14 @@ import utility.StringUtility;
 import java.util.List;
 
 public class FormulaOneArticle extends Article {
+    private final static double BASE_PRICE = 100;
+    private final static double ADDON_PRICE_FERRARI_MERCEDES = 50;
+
+    private final static double BASE_RATING = 100;
+    private final static double ADDON_RATING_FERRARI_MERCEDES = 50;
+
+    protected String scuderia;
+    
     public FormulaOneArticle(String title, String text, String scuderia) {
         super(title, text);
         this.scuderia = scuderia;
@@ -13,20 +21,12 @@ public class FormulaOneArticle extends Article {
         calculateRating();
     }
 
-    private final static double basePrice = 100;
-    private final static double addonPriceFerrariMercedes = 50;
-
-    private final static double baseRating = 100;
-    private final static double addonRatingFerrariMercedes = 50;
-
-    protected String scuderia;
-
     @Override
     protected void calculatePriceNews() {
-        this.price = basePrice;
+        this.price = BASE_PRICE;
 
         if (StringUtility.containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
-            price += addonPriceFerrariMercedes;
+            price += ADDON_PRICE_FERRARI_MERCEDES;
         }
 
         System.out.println("Price of this article has been updated!");
@@ -34,10 +34,10 @@ public class FormulaOneArticle extends Article {
 
     @Override
     protected void calculateRating() {
-        this.rating = basePrice;
+        this.rating = BASE_RATING;
 
         if (StringUtility.containsAny(scuderia, List.of("Ferrari", "Mercedes"))){
-            rating += addonRatingFerrariMercedes;
+            rating += ADDON_RATING_FERRARI_MERCEDES;
         }
 
         System.out.println("Rating of this article has been updated!");

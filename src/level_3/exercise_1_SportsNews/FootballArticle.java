@@ -5,6 +5,21 @@ import utility.StringUtility;
 import java.util.List;
 
 public class FootballArticle extends Article {
+    private final static double BASE_PRICE = 300;
+    private final static double ADDON_PRICE_CHAMPIONS_LEAGUE = 300;
+    private final static double ADDON_PRICE_BARCELONA_MADRID = 100;
+    private final static double ADDON_PRICE_FERRAN_BENZEMA = 50;
+
+    private final static double BASE_RATING = 5;
+    private final static double ADDON_RATING_CHAMPIONS_LEAGUE = 3;
+    private final static double ADDON_RATING_LEAGUE = 2;
+    private final static double ADDON_RATING_BARCELONA_MADRID = 1;
+    private final static double ADDON_RATING_FERRAN_BENZEMA = 1;
+
+    protected String competition;
+    protected String club;
+    protected String player;
+
     public FootballArticle(String title, String text, String competition, String club, String player) {
         super(title, text);
         this.competition = competition;
@@ -14,36 +29,21 @@ public class FootballArticle extends Article {
         calculatePriceNews();
         calculateRating();
     }
-
-    private final static double basePrice = 300;
-    private final static double addonPriceChampionsLeague = 300;
-    private final static double addonPriceBarcelonaMadrid = 100;
-    private final static double addonPriceFerranBenzema = 50;
-
-    private final static double baseRating = 5;
-    private final static double addonRatingChampionsLeague = 3;
-    private final static double addonRatingLeague = 2;
-    private final static double addonRatingBarcelonaMadrid = 1;
-    private final static double addonRatingFerranBenzema = 1;
-
-    protected String competition;
-    protected String club;
-    protected String player;
-
+    
     @Override
     protected void calculatePriceNews() {
-        this.price = basePrice;
+        this.price = BASE_PRICE;
 
         if (StringUtility.contains(competition, "Champions League")){
-            price += addonPriceChampionsLeague;
+            price += ADDON_PRICE_CHAMPIONS_LEAGUE;
         }
 
         if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
-            price += addonPriceBarcelonaMadrid;
+            price += ADDON_PRICE_BARCELONA_MADRID;
         }
 
         if (StringUtility.containsAny(player, List.of("Benzema", "Ferran Torres"))){
-            price += addonPriceFerranBenzema;
+            price += ADDON_PRICE_FERRAN_BENZEMA;
         }
 
         System.out.println("Price of this article has been updated!");
@@ -51,21 +51,21 @@ public class FootballArticle extends Article {
 
     @Override
     protected void calculateRating() {
-        this.rating = baseRating;
+        this.rating = BASE_RATING;
 
         if (StringUtility.contains(competition, "Champions League")){
-            rating += addonRatingChampionsLeague;
+            rating += ADDON_RATING_CHAMPIONS_LEAGUE;
         }
         else if (StringUtility.contains(competition, "League")){
-            rating += addonRatingLeague;
+            rating += ADDON_RATING_LEAGUE;
         }
 
         if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
-            rating += addonRatingBarcelonaMadrid;
+            rating += ADDON_RATING_BARCELONA_MADRID;
         }
 
         if (StringUtility.containsAny(player, List.of("Benzema", "Ferran Torres"))){
-            rating += addonRatingFerranBenzema;
+            rating += ADDON_RATING_FERRAN_BENZEMA;
         }
 
         System.out.println("Rating of this article has been updated!");

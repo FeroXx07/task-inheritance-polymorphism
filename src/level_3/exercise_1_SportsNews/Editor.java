@@ -1,22 +1,20 @@
 package level_3.exercise_1_SportsNews;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Editor {
+    private final String dni;
+    private static final double WAGE = 1500;
+    private ArrayList<Article> articles;
+
     public Editor(String dni) {
         validateDni(dni);
         this.dni = dni;
         articles = new ArrayList<>();
     }
 
-    private final String dni;
-    private static double wage = 1500;
-    private ArrayList<Article> articles;
-
     public String getDni() { return dni; }
-    public static double getWage() { return wage; }
     public List<Article> getArticles() { return List.copyOf(articles); }
 
     public void addArticle(Article toAdd){

@@ -5,6 +5,18 @@ import utility.StringUtility;
 import java.util.List;
 
 public class BasketballArticle extends Article {
+    private final static double BASE_PRICE = 250;
+    private final static double ADDON_PRICE_EURO_LEAGUE = 75;
+    private final static double ADDON_PRICE_BARCELONA_MADRID = 75;
+
+    private final static double BASE_RATING = 4;
+    private final static double ADDON_RATING_EURO_LEAGUE = 3;
+    private final static double ADDON_RATING_ACB = 2;
+    private final static double ADDON_RATING_BARCELONA_MADRID = 1;
+
+    protected String competition;
+    protected String club;
+    
     public BasketballArticle(String title, String text, String competition, String club) {
         super(title, text);
         this.competition = competition;
@@ -14,28 +26,16 @@ public class BasketballArticle extends Article {
         calculateRating();
     }
 
-    private final static double basePrice = 250;
-    private final static double addonPriceEuroLeague = 75;
-    private final static double addonPriceBarcelonaMadrid = 75;
-
-    private final static double baseRating = 4;
-    private final static double addonRatingEuroLeague = 3;
-    private final static double addonRatingACB = 2;
-    private final static double addonRatingBarcelonaMadrid = 1;
-
-    protected String competition;
-    protected String club;
-
     @Override
     protected void calculatePriceNews() {
-        this.price = basePrice;
+        this.price = BASE_PRICE;
 
         if (StringUtility.contains(competition, "Euro League") || StringUtility.contains(competition, "EuroLeague")){
-            price += addonPriceEuroLeague;
+            price += ADDON_PRICE_EURO_LEAGUE;
         }
 
         if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
-            price += addonPriceBarcelonaMadrid;
+            price += ADDON_PRICE_BARCELONA_MADRID;
         }
 
         System.out.println("Price of this article has been updated!");
@@ -43,17 +43,17 @@ public class BasketballArticle extends Article {
 
     @Override
     protected void calculateRating() {
-        this.rating = baseRating;
+        this.rating = BASE_RATING;
 
         if (StringUtility.contains(competition, "Euro League") || StringUtility.contains(competition, "EuroLeague")){
-            rating += addonRatingEuroLeague;
+            rating += ADDON_RATING_EURO_LEAGUE;
         }
         else if (StringUtility.contains(competition, "ACB")){
-            rating += addonRatingACB;
+            rating += ADDON_RATING_ACB;
         }
 
         if (StringUtility.containsAny(club, List.of("Barcelona", "Madrid"))){
-            rating += addonPriceBarcelonaMadrid;
+            rating += ADDON_RATING_BARCELONA_MADRID;
         }
 
         System.out.println("Rating of this article has been updated!");

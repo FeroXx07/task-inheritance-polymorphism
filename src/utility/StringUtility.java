@@ -9,9 +9,9 @@ public class StringUtility {
         return current.equalsIgnoreCase(other);
     }
 
-    public static boolean containsAny(String content, List<String> toFindList){
-        for (String word : toFindList){
-            if (content.toLowerCase(Locale.ROOT).contains(word.toLowerCase(Locale.ROOT))){
+    public static boolean containsAny(String current, List<String> otherList){
+        for (String word : otherList){
+            if (current.toLowerCase(Locale.ROOT).contains(word.toLowerCase(Locale.ROOT))){
                 return true;
             }
         }

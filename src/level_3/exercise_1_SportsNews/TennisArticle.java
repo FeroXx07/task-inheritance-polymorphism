@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TennisArticle extends Article {
+    private final static double BASE_PRICE = 150;
+    private final static double ADDON_PRICE_BIG_THREE = 100;
+
+    private final static double BASE_RATING = 4;
+    private final static double ADDON_RATING_BIG_THREE = 3;
+
+    private final static List<String> BIG_THREE_PLAYERS = List.of("Federer", "Nadal", "Djokovic");
+
     public TennisArticle(String title, String text,
                          String competition, ArrayList<String> players) {
         super(title, text);
@@ -16,26 +24,18 @@ public class TennisArticle extends Article {
         calculateRating();
     }
 
-    private final static double basePrice = 150;
-    private final static double addonPriceBigThree = 100;
-
-    private final static double baseRating = 4;
-    private final static double addonRatingBigThree = 3;
-
-    private final static List<String> bigThreePlayers = List.of("Federer", "Nadal", "Djokovic");
-
     protected String competition;
     protected ArrayList<String> players;
 
     @Override
     protected void calculatePriceNews() {
-        this.price = basePrice;
+        this.price = BASE_PRICE;
 
         // Only add the addon once, hence the break
         for (String player : players) {
-            if (StringUtility.containsAny(player, bigThreePlayers))
+            if (StringUtility.containsAny(player, BIG_THREE_PLAYERS))
             {
-                price += addonPriceBigThree;
+                price += ADDON_PRICE_BIG_THREE;
                 break;
             }
         }
@@ -45,13 +45,13 @@ public class TennisArticle extends Article {
 
     @Override
     protected void calculateRating() {
-        this.rating = baseRating;
+        this.rating = BASE_RATING;
 
         // Only add the addon once, hence the break
         for (String player : players) {
-            if (StringUtility.containsAny(player, bigThreePlayers))
+            if (StringUtility.containsAny(player, BIG_THREE_PLAYERS))
             {
-                rating += addonRatingBigThree;
+                rating += ADDON_RATING_BIG_THREE;
                 break;
             }
         }

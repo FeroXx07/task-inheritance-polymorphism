@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditorialOffice {
-    public EditorialOffice(ArrayList<Editor> editors) {
-        this.editors = editors;
-    }
+    ArrayList<Editor> editors;
 
     public EditorialOffice() {
         editors = new ArrayList<>();
     }
-    ArrayList<Editor> editors;
 
     public void addEditor(String dni) {
         Editor.validateDni(dni);

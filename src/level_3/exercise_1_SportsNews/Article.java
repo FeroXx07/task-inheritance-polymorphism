@@ -6,18 +6,18 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class Article {
+    protected String id;
+    protected String title;
+    protected String text = "";
+    protected double rating;
+    protected double price;
+
     public Article(String title, String text) {
         this.title = title;
         this.text = text;
 
         id = IdGenerator.generateTimestampId();
     }
-
-    protected String id;
-    protected String title;
-    protected String text = "";
-    protected double rating;
-    protected double price;
 
     protected abstract void calculatePriceNews();
     protected abstract void calculateRating();

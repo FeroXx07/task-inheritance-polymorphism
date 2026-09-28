@@ -112,8 +112,7 @@ public class Main {
     private void handleEditorAddition(Scanner input) {
         System.out.println("\nOption 1 selected: Add Editor");
         editorialOffice.showAllEditors();
-        // Inputs through utility class, they manage exception handling and retries.
-        // After each numerical input, small range validation.
+
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the new Editor: ");
         editorialOffice.addEditor(dni);
     }
