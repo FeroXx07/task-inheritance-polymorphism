@@ -10,8 +10,13 @@ public abstract class Instrument {
         this.price = price;
     }
 
-    public String getName() { return name; }
-    public double getPrice() { return price; }
-
     public abstract void play();
+
+    @Override
+    public String toString() {
+        return "Instrument{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

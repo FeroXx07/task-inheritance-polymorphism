@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Main {
     static void main(String[] args) {
 
+        WindInstrument.staticPlay();
+
         ArrayList<Instrument> instruments = new ArrayList<Instrument>();
 
         instruments.add(new WindInstrument("WindInstrument", 20.0));
@@ -14,8 +16,5 @@ public class Main {
         for (Instrument instrument : instruments) {
             instrument.play();
         }
-
-        SampleBlockClass sampleBlockClass = new SampleBlockClass();
-        System.out.println(sampleBlockClass);
     }
 }

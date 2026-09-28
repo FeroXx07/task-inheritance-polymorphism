@@ -7,6 +7,8 @@ public class WindInstrument extends Instrument {
 
     @Override
     public void play() {
-        System.out.println("Està sonant un instrument de vent");
+        System.out.println("Està sonant un instrument de vent " + this);
     }
+
+    public static void staticPlay() {System.out.println("Static method llamado de WindInstrument");}
 }
