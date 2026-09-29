@@ -38,10 +38,10 @@ public class Main {
                         handleArticlesDisplay(input);
                         break;
                     case 6:
-                        handleArticleRatingCalc(input);
+                        handleArticleRatingConsult(input);
                         break;
                     case 7:
-                        handleArticlePriceCalc(input);
+                        handleArticlePriceConsult(input);
                         break;
                 }
             } catch (Exception e) {
@@ -51,11 +51,21 @@ public class Main {
         } while (!exit);
     }
 
+    private void showAllEditors() {
+        System.out.println("Editorial Office: Current editors -> " + editorialOffice.getEditors());
+    }
+
+    private void showArticlesOfEditor(String dni) {
+        Editor editor = editorialOffice.getEditor(dni);
+        System.out.println("Editorial Office: Showing articles of editor " + editor.getDni());
+        System.out.println(editor.toFullString());
+    }
+
     private void seedData() {
         final String editorDniA = "61234567A";
         final String editorDniB = "67654321Z";
-        editorialOffice.addEditor(editorDniA);
-        editorialOffice.addEditor(editorDniB);
+        editorialOffice.addEditor("Daniel", editorDniA);
+        editorialOffice.addEditor("Sara", editorDniB);
 
         editorialOffice.addArticleToEditor(new FootballArticle("El barcelona de flick vuelve a golear", "El barcelona vuelva golear sin necesidad de ferran torres.",
                 "Champions league", "barcelona", "ferran torres"), editorDniA);
@@ -79,8 +89,8 @@ public class Main {
             System.out.println("Option 3: Add Article to Editor");
             System.out.println("Option 4: Remove Article");
             System.out.println("Option 5: Show Articles of Editor");
-            System.out.println("Option 6: Calculate Article Rating");
-            System.out.println("Option 7: Calculate Article Price");
+            System.out.println("Option 6: Consult Article Rating");
+            System.out.println("Option 7: Consult Article Price");
             option = ScannerUtility.fetchNumber(input, "", "Invalid byte value.", byte.class);
             if (option < MINIM || option > MAXIM) {
                 System.out.println("Select a valid option!");
@@ -111,30 +121,31 @@ public class Main {
 
     private void handleEditorAddition(Scanner input) {
         System.out.println("\nOption 1 selected: Add Editor");
-        editorialOffice.showAllEditors();
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the new Editor: ");
-        editorialOffice.addEditor(dni);
+        String name = ScannerUtility.fetchStringInput(input, "Please enter the NAME of the new Editor: ");
+        editorialOffice.addEditor(name, dni);
+        System.out.println("Editorial Office: \"" + dni + "\" added successfully");
     }
 
     private void handleEditorRemoval(Scanner input) {
         System.out.println("\nOption 2 selected: Remove Editor");
-        editorialOffice.showAllEditors();
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the to be removed Editor: ");
         editorialOffice.removeEditor(dni);
+        System.out.println("Editorial Office: \"" + dni + "\" removed successfully");
     }
 
     private void handleArticleCreation(Scanner input) {
         System.out.println("\nOption 3 selected: Add Article to Editor");
-        editorialOffice.showAllEditors();
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the Editor to whom the article will be added: ");
         Editor editor = editorialOffice.getEditor(dni);
 
         String title = ScannerUtility.fetchStringInput(input, "Please enter the title of the article: ");
-        editor.validationArticleNotExists(title);
-
         String text = ScannerUtility.fetchStringInput(input, "Please enter the content of the article: ");
 
         boolean exit = false;
@@ -175,6 +186,8 @@ public class Main {
 
                 if (newArticle != null) {
                     editorialOffice.addArticleToEditor(newArticle, editor.getDni());
+                    System.out.println("Editorial Office: Article with title: \"" + newArticle.title + "\" added successfully to the editor: " + dni);
+                    showArticlesOfEditor(dni);
                     exit = true;
                 }
             } catch (Exception e) {
@@ -185,7 +198,7 @@ public class Main {
 
     private void handleArticleRemoval(Scanner input) {
         System.out.println("\nOption 4 selected: Remove Article from Editor");
-        editorialOffice.showAllEditors();
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the Editor to whom the article will be removed: ");
         Editor editor = editorialOffice.getEditor(dni);
@@ -194,11 +207,12 @@ public class Main {
 
         String title = ScannerUtility.fetchStringInput(input, "Please enter the title of the article to be removed: ");
         editorialOffice.removeArticleFromEditor(title, dni);
+        System.out.println("Editorial Office: Article with title: \"" + title + "\" removed successfully from the editor: " + dni);
     }
 
     private void handleArticlesDisplay(Scanner input) {
         System.out.println("\nOption 5 selected: Show Articles of Editor");
-        editorialOffice.showAllEditors();
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the Editor of whom the articles will be displayed: ");
         Editor editor = editorialOffice.getEditor(dni);
@@ -206,9 +220,9 @@ public class Main {
         System.out.println("Editorial Office: Articles of Editor: " + editor.toFullString());
     }
 
-    private void handleArticleRatingCalc(Scanner input) {
-        System.out.println("\nOption 5 selected: Calculate Article Rating");
-        editorialOffice.showAllEditors();
+    private void handleArticleRatingConsult(Scanner input) {
+        System.out.println("\nOption 5 selected: Consult Article Rating");
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the Editor of whom the articles will be displayed: ");
         Editor editor = editorialOffice.getEditor(dni);
@@ -219,9 +233,9 @@ public class Main {
         Article article = editor.getArticle(title);
         System.out.println("Editorial Office: The rating of the article is: " + article.rating);
     }
-    private void handleArticlePriceCalc(Scanner input) {
-        System.out.println("\nOption 6 selected: Calculate Article Price");
-        editorialOffice.showAllEditors();
+    private void handleArticlePriceConsult(Scanner input) {
+        System.out.println("\nOption 6 selected: Consult Article Price");
+        showAllEditors();
 
         String dni = ScannerUtility.fetchStringInput(input, "Please enter the DNI of the Editor of whom the articles will be displayed: ");
         Editor editor = editorialOffice.getEditor(dni);

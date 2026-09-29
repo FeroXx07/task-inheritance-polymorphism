@@ -1,8 +1,8 @@
 package level_2.exercise_1_Smartphone;
 
 public class Phone  {
-    protected String brand;
-    protected String model;
+    private final String brand;
+    private final String model;
 
     public Phone(String brand, String model) {
         this.brand = brand;

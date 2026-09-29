@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Editor {
+    private final String name;
     private final String dni;
-    private static final double WAGE = 1500;
-    private ArrayList<Article> articles;
+    private static double wage = 1500;
+    private List<Article> articles;
 
-    public Editor(String dni) {
-        validateDni(dni);
+    public Editor(String name, String dni) {
+        this.name = name;
         this.dni = dni;
         articles = new ArrayList<>();
+        validateDni(dni);
     }
 
     public String getDni() { return dni; }
@@ -28,16 +30,19 @@ public class Editor {
     }
 
     public Article getArticle(String title){
-        validationArticleExists(title);
-        return articles.stream().filter(a -> a.title.equalsIgnoreCase(title)).findFirst().orElse(null);
+        Article foundArticle = articles.stream().filter(a -> a.title.equalsIgnoreCase(title)).findFirst().orElse(null);
+        if (foundArticle == null){
+            throw new IllegalArgumentException("Article with title \"" + title + "\" DOES NOT exist in editor's database");
+        }
+        return foundArticle;
     }
 
-    public void validationArticleNotExists(String title){
+    private void validationArticleNotExists(String title){
         if (articles.stream().anyMatch(a -> a.title.equalsIgnoreCase(title))){
             throw new IllegalArgumentException("Article with title \"" + title + "\" ALREADY exists in editor's database");
         }
     }
-    public void validationArticleExists(String title){
+    private void validationArticleExists(String title){
         if (articles.stream().noneMatch(a -> a.title.equalsIgnoreCase(title))){
             throw new IllegalArgumentException("Article with title \"" + title + "\" DOES NOT exist in editor's database");
         }

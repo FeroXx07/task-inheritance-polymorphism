@@ -7,10 +7,8 @@ import java.util.List;
 public class FormulaOneArticle extends Article {
     private final static double BASE_PRICE = 100;
     private final static double ADDON_PRICE_FERRARI_MERCEDES = 50;
-
-    private final static double BASE_RATING = 100;
-    private final static double ADDON_RATING_FERRARI_MERCEDES = 50;
-
+    private final static double BASE_RATING = 4;
+    private final static double ADDON_RATING_FERRARI_MERCEDES = 2;
     protected String scuderia;
     
     public FormulaOneArticle(String title, String text, String scuderia) {

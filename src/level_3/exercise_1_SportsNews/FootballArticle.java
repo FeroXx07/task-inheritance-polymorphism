@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FootballArticle extends Article {
     private final static double BASE_PRICE = 300;
-    private final static double ADDON_PRICE_CHAMPIONS_LEAGUE = 300;
+    private final static double ADDON_PRICE_CHAMPIONS_LEAGUE = 100;
     private final static double ADDON_PRICE_BARCELONA_MADRID = 100;
     private final static double ADDON_PRICE_FERRAN_BENZEMA = 50;
 

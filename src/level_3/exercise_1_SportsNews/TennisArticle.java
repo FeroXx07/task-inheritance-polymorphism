@@ -8,14 +8,14 @@ import java.util.List;
 public class TennisArticle extends Article {
     private final static double BASE_PRICE = 150;
     private final static double ADDON_PRICE_BIG_THREE = 100;
-
     private final static double BASE_RATING = 4;
     private final static double ADDON_RATING_BIG_THREE = 3;
-
     private final static List<String> BIG_THREE_PLAYERS = List.of("Federer", "Nadal", "Djokovic");
+    private String competition;
+    private List<String> players;
 
     public TennisArticle(String title, String text,
-                         String competition, ArrayList<String> players) {
+                         String competition, List<String> players) {
         super(title, text);
         this.competition = competition;
         this.players = players;
@@ -23,9 +23,6 @@ public class TennisArticle extends Article {
         calculatePriceNews();
         calculateRating();
     }
-
-    protected String competition;
-    protected ArrayList<String> players;
 
     @Override
     protected void calculatePriceNews() {

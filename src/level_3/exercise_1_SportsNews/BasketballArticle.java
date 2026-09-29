@@ -13,7 +13,6 @@ public class BasketballArticle extends Article {
     private final static double ADDON_RATING_EURO_LEAGUE = 3;
     private final static double ADDON_RATING_ACB = 2;
     private final static double ADDON_RATING_BARCELONA_MADRID = 1;
-
     protected String competition;
     protected String club;
     

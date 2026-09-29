@@ -8,8 +8,8 @@ public class MotoGpArticle extends Article {
     private final static double BASE_PRICE = 100;
     private final static double ADDON_PRICE_HONDA_YAMAHA = 50;
 
-    private final static double BASE_RATING = 100;
-    private final static double ADDON_RATING_HONDA_YAMAHA = 50;
+    private final static double BASE_RATING = 3;
+    private final static double ADDON_RATING_HONDA_YAMAHA = 3;
 
     protected String team;
     

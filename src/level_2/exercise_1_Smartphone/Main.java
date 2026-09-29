@@ -5,5 +5,6 @@ public class Main {
         Smartphone mySmartphone = new Smartphone("Samsung", "A53");
         mySmartphone.takePicture();
         mySmartphone.engageAlarm();
+        mySmartphone.makeCall("630410510");
     }
 }
